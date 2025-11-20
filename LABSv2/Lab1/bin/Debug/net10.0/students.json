@@ -1,0 +1,50 @@
+[
+  {
+    "FullName": "\u0418\u0432\u0430\u043D\u043E\u0432 \u0418\u0432\u0430\u043D \u0418\u0432\u0430\u043D\u043E\u0432\u0438\u0447",
+    "GroupNumber": "\u0413\u0420-01",
+    "Performance": [
+      9,
+      8,
+      9,
+      10,
+      8
+    ],
+    "AveragePerformance": 8.8
+  },
+  {
+    "FullName": "\u041F\u0435\u0442\u0440\u043E\u0432 \u041F\u0435\u0442\u0440 \u041F\u0435\u0442\u0440\u043E\u0432\u0438\u0447",
+    "GroupNumber": "\u0413\u0420-02",
+    "Performance": [
+      7,
+      6,
+      8,
+      7,
+      6
+    ],
+    "AveragePerformance": 6.8
+  },
+  {
+    "FullName": "\u0421\u0438\u0434\u043E\u0440\u043E\u0432\u0430 \u0410\u043D\u043D\u0430 \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\u043D\u0430",
+    "GroupNumber": "\u0413\u0420-01",
+    "Performance": [
+      10,
+      9,
+      10,
+      9,
+      10
+    ],
+    "AveragePerformance": 9.6
+  },
+  {
+    "FullName": "\u041A\u043E\u0437\u043B\u043E\u0432 \u0410\u043B\u0435\u043A\u0441\u0435\u0439 \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447",
+    "GroupNumber": "\u0413\u0420-03",
+    "Performance": [
+      8,
+      8,
+      9,
+      8,
+      9
+    ],
+    "AveragePerformance": 8.4
+  }
+]

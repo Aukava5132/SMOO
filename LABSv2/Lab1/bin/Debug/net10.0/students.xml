@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Student>
+    <FullName>Иванов Иван Иванович</FullName>
+    <GroupNumber>ГР-01</GroupNumber>
+    <Performance>
+      <int>9</int>
+      <int>8</int>
+      <int>9</int>
+      <int>10</int>
+      <int>8</int>
+    </Performance>
+  </Student>
+  <Student>
+    <FullName>Петров Петр Петрович</FullName>
+    <GroupNumber>ГР-02</GroupNumber>
+    <Performance>
+      <int>7</int>
+      <int>6</int>
+      <int>8</int>
+      <int>7</int>
+      <int>6</int>
+    </Performance>
+  </Student>
+  <Student>
+    <FullName>Сидорова Анна Михайловна</FullName>
+    <GroupNumber>ГР-01</GroupNumber>
+    <Performance>
+      <int>10</int>
+      <int>9</int>
+      <int>10</int>
+      <int>9</int>
+      <int>10</int>
+    </Performance>
+  </Student>
+  <Student>
+    <FullName>Козлов Алексей Сергеевич</FullName>
+    <GroupNumber>ГР-03</GroupNumber>
+    <Performance>
+      <int>8</int>
+      <int>8</int>
+      <int>9</int>
+      <int>8</int>
+      <int>9</int>
+    </Performance>
+  </Student>
+</ArrayOfStudent>
