@@ -3,7 +3,7 @@ using System;
 
 public class StudentInputManager
 {
-    public void FillLibrary(StudentLibrary library)
+    public void FillLibrary(StudentCollection collection)
     {
         Console.WriteLine("ОБЕРІТЬ СПОСІБ ЗАПОВНЕННЯ");
         Console.WriteLine("1 - Згенерувати випадкових студентів");
@@ -15,21 +15,21 @@ public class StudentInputManager
         switch (choice)
         {
             case "1":
-                GenerateRandomStudents(library);
+                GenerateRandomStudents(collection);
                 break;
             case "2":
-                InputStudentsManually(library);
+                InputStudentsManually(collection);
                 break;
             default:
                 Console.WriteLine("Неправильний вибір. Генеруємо 5 випадкових студентів");
-                StudentGenerator.GenerateRandomStudents(library, 5);
+                StudentGenerator.GenerateRandomStudents(collection, 5);
                 break;
         }
         
-        Console.WriteLine("До бібліотеки додано " + library.GetAllStudents().Length + " студентів");
+        Console.WriteLine("До бібліотеки додано " + collection.GetAllStudents().Length + " студентів");
     }
 
-    private void GenerateRandomStudents(StudentLibrary library)
+    private void GenerateRandomStudents(StudentCollection collection)
     {
         Console.Write("Скільки студентів згенерувати? ");
         string input = Console.ReadLine();
@@ -40,11 +40,11 @@ public class StudentInputManager
             count = 5;
         }
         
-        StudentGenerator.GenerateRandomStudents(library, count);
+        StudentGenerator.GenerateRandomStudents(collection, count);
         Console.WriteLine("Згенеровано " + count + " студентів");
     }
 
-    private void InputStudentsManually(StudentLibrary library)
+    private void InputStudentsManually(StudentCollection collection)
     {
         Console.WriteLine("РУЧНИЙ ВВІД СТУДЕНТІВ");
         int studentCount = 0;
@@ -59,7 +59,7 @@ public class StudentInputManager
             string group = InputGroup();
             int[] grades = InputGrades();
             
-            library.AddStudent(new Student(fullName, group, grades));
+            collection.AddStudent(new Student(fullName, group, grades));
             studentCount++;
             
             Console.WriteLine("Студента " + fullName + " додано успішно");

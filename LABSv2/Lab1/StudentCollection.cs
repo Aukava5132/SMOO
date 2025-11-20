@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class StudentLibrary
+public class StudentCollection
 {
     private List<Student> _students;
 
-    public StudentLibrary()
+    public StudentCollection()
     {
         _students = new List<Student>();
     }

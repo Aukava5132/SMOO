@@ -1,4 +1,4 @@
-﻿namespace Lab1;
+﻿namespace Lab2;
 using System;
 
 public class StudentGenerator
@@ -19,7 +19,7 @@ public class StudentGenerator
         string fullName = lastName + " " + firstName + " " + middleName;
         string group = _groups[_random.Next(_groups.Length)];
         
-        int gradesCount = _random.Next(3, 6);
+        int gradesCount = 5;
         int[] grades = new int[gradesCount];
         
         for (int i = 0; i < gradesCount; i++)
@@ -30,11 +30,13 @@ public class StudentGenerator
         return new Student(fullName, group, grades);
     }
 
-    public static void GenerateRandomStudents(StudentCollection collection, int count)
+    public static List<Student> GenerateRandomStudents(int count)
     {
+        List<Student> students = new List<Student>();
         for (int i = 0; i < count; i++)
         {
-            collection.AddStudent(GenerateRandomStudent());
+            students.Add(GenerateRandomStudent());
         }
+        return students;
     }
 }

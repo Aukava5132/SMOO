@@ -7,20 +7,20 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         
-        StudentLibrary library = new StudentLibrary();
+        StudentCollection studentCollectioncollection = new StudentCollection();
         StudentPrinter printer = new StudentPrinter();
         StudentInputManager inputManager = new StudentInputManager();
         StudentSerializationManager serializationManager = new StudentSerializationManager();
         
-        inputManager.FillLibrary(library);
+        inputManager.FillLibrary(studentCollectioncollection);
         
-        Student[] allStudents = library.GetAllStudents();
+        Student[] allStudents = studentCollectioncollection.GetAllStudents();
         printer.PrintStudents(allStudents, "Всі студенти");
         printer.PrintStudentSummary(allStudents);
 
         serializationManager.ManageSerialization(allStudents, printer);
         
-        Student[] successfulStudents = library.GetSuccessfulStudents(8.0);
+        Student[] successfulStudents = studentCollectioncollection.GetSuccessfulStudents(8.0);
         printer.PrintStudents(successfulStudents, "Успішні студенти (середній бал >= 8)");
 
         Console.ReadLine();
