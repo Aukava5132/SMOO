@@ -15,8 +15,6 @@ public class Student
     {
         FullName = fullName;
         GroupNumber = groupNumber;
-        
-        // Копируем оценки в массив фиксированного размера
         if (performance != null)
         {
             int elementsToCopy = Math.Min(performance.Length, PerformanceCount);

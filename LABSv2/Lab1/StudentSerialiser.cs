@@ -15,12 +15,12 @@ public class StudentSerializer
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {
                 xmlSerializer.Serialize(fs, students);
-                Console.WriteLine($"XML serialisation successful: {filePath}");
+                Console.WriteLine("XML серіалізація виконана: " + filePath);
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"XML err serialisation: {ex.Message}");
+            Console.WriteLine("Помилка XML серіалізації: " + ex.Message);
         }
     }
 
@@ -37,7 +37,7 @@ public class StudentSerializer
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"XML err deserialisation: {ex.Message}");
+            Console.WriteLine("Помилка XML десеріалізації: " + ex.Message);
             return new Student[0];
         }
     }
@@ -51,11 +51,11 @@ public class StudentSerializer
                 WriteIndented = true 
             });
             File.WriteAllText(filePath, jsonString);
-            Console.WriteLine($"JSON serialisation successful: {filePath}");
+            Console.WriteLine("JSON серіалізація виконана: " + filePath);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"JSON err deserialisation: {ex.Message}");
+            Console.WriteLine("Помилка JSON серіалізації: " + ex.Message);
         }
     }
 
@@ -64,11 +64,11 @@ public class StudentSerializer
         try
         {
             string jsonFromFile = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<Student[]>(jsonFromFile);
+            return JsonSerializer.Deserialize<Student[]>(jsonFromFile) ?? new Student[0];
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"JSON err deserialisation: {ex.Message}");
+            Console.WriteLine("Помилка JSON десеріалізації: " + ex.Message);
             return new Student[0];
         }
     }

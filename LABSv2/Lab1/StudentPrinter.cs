@@ -4,34 +4,34 @@ using System.Linq;
 
 public class StudentPrinter
 {
-    public void PrintStudents(Student[] students, string title = "Список студентов:")
+    public void PrintStudents(Student[] students, string title = "Список студентів:")
     {
-        Console.WriteLine($"\n=== {title} ===");
+        Console.WriteLine(title);
         
         if (students == null || students.Length == 0)
         {
-            Console.WriteLine("Студенты не найдены");
+            Console.WriteLine("Студенти не знайдені");
             return;
         }
 
-        foreach (var student in students)
+        foreach (Student student in students)
         {
-            Console.WriteLine($"ФИО: {student.FullName}");
-            Console.WriteLine($"Группа: {student.GroupNumber}");
-            Console.WriteLine($"Оценки: {string.Join(", ", student.Performance)}");
-            Console.WriteLine($"Средний балл: {student.AveragePerformance:F2}");
+            Console.WriteLine("ПІБ: " + student.FullName);
+            Console.WriteLine("Група: " + student.GroupNumber);
+            Console.WriteLine("Оцінки: " + string.Join(", ", student.Performance));
+            Console.WriteLine("Середній бал: " + student.AveragePerformance.ToString("F2"));
             Console.WriteLine("---");
         }
     }
 
     public void PrintStudentSummary(Student[] students)
     {
-        Console.WriteLine($"\nВсего студентов: {students.Length}");
+        Console.WriteLine("Всього студентів: " + students.Length);
         
         if (students != null && students.Length > 0)
         {
-            var averageAll = students.Average(s => s.AveragePerformance);
-            Console.WriteLine($"Общий средний балл: {averageAll:F2}");
+            double averageAll = students.Average(s => s.AveragePerformance);
+            Console.WriteLine("Загальний середній бал: " + averageAll.ToString("F2"));
         }
     }
 }
