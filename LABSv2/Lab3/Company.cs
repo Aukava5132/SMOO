@@ -7,6 +7,6 @@
         public string BusinessProfile { get; set; }
         public string DirectorName { get; set; }
         public int EmployeeCount { get; set; }
-        public string Address { get; set; }
+        public string Country { get; set; }
     }
 }
