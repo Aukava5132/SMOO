@@ -6,6 +6,11 @@ public class CompanyCollection
 {
     private List<Company> _companies;
     
+    public CompanyCollection()
+    {
+        _companies = new List<Company>();
+    }
+    
     public void AddCompany(Company company)
     { 
         _companies.Add(company);
@@ -107,6 +112,11 @@ public class CompanyCollection
      */
     public List<Company> GetAllDirectorNameIsBlackAndNameIsWhite()
     {
-        return _companies.Where(c => c.DirectorName is "Black" && c.Name is "White").ToList();
+        return _companies.Where(c => (c is { DirectorName: "Black", Name: "White" })).ToList();
+    }
+    
+    public Company First()
+    {
+        return _companies.First();
     }
 }

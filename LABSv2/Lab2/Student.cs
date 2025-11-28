@@ -9,8 +9,6 @@ public class Student
     public string GroupNumber { get; set; }
     public int[] Performance { get; set; } = new int[PerformanceCount];
     
-    public Student() { }
-    
     public Student(string fullName, string groupNumber, int[] performance)
     {
         FullName = fullName;
