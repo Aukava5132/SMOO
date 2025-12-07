@@ -52,7 +52,7 @@ public class CompanyCollection
     {
         return _companies.Where(c => c.EmployeeCount > count);
     }
-
+    
     private IEnumerable<Company> GetAllEmployeeCountLessThan(int count, IEnumerable<Company>? companies)
     { 
         return (companies ?? _companies).Where(c => c.EmployeeCount < count);

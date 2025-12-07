@@ -39,9 +39,9 @@ public class Printer
         Console.WriteLine($"Возраст компании: {(DateTime.Now - company.FoundationDate).Days} дней");
     }
 
-    public static void PrintAllInfo(CompanyCollection collection)
+    public static void PrintAllInfoCompanies(CompanyCollection collection)
     {
-        Console.WriteLine("=== ВСЯ ИНФОРМАЦИЯ О КОМПАНИЯХ ===");
+        Console.WriteLine("=== ВСЯ ИНФОРМАЦІЯ ПРО КОМПАНІЇ ===");
         
         PrintCompanies(collection.GetAll(), "Все компании");
         /*PrintCompanies(collection.GetAllFood(), "Компании с названием 'Food'");
@@ -54,5 +54,70 @@ public class Printer
         PrintCompanies(collection.GetAllFoundationDateSubstract2Years(), "Моложе 2 лет");
         PrintCompanies(collection.GetAllFoundationDateSubstract150Days(), "Моложе 150 дней");*/
         PrintCompanies(collection.GetAllDirectorNameIsBlackAndNameIsWhite(), "Директор Black + название White");
+    }
+
+    public static void PrintTelephone(Telephone telephone)
+    {
+        if (telephone == null)
+        {
+            Console.WriteLine("Телефон: null");
+            return;
+        }
+        Console.WriteLine($"Назва: {telephone.Name}");
+        Console.WriteLine($"Дата виробництва: {telephone.Price}");
+        Console.WriteLine($"Ціна: {telephone.ManufactureDate:dd.MM.yyyy}");
+    }
+
+    public static void PrintTelephones(List<Telephone> telephones)
+    {
+        foreach (Telephone telephone in telephones)
+        {
+            PrintTelephone(telephone);
+        }
+    }
+    
+    public static void PrintTelephonesGroup(List<IGrouping<string, Telephone>> telephones)
+    {
+        foreach (IGrouping<string, Telephone> telephone in telephones)
+        {
+            Console.WriteLine($"Назва: {telephone.Key} - {telephone.Count()}");
+        }
+    }
+    
+    public static void PrintTelephonesGroupModel(List<IGrouping<string, Telephone>> telephones)
+    {
+        foreach (IGrouping<string, Telephone> telephoneNames in telephones)
+        {
+            foreach (IGrouping<string, Telephone> telephoneModels in telephoneNames.GroupBy(t => t.Model).ToList())
+            {
+                Console.WriteLine($"Назва: {telephoneNames.Key} {telephoneModels.Key} - {telephoneModels.Count()}");
+            }
+        }
+    }
+    
+    public static void PrintTelephonesGroupMufacturingDate(List<IGrouping<string, Telephone>> telephones)
+    {
+        foreach (IGrouping<string, Telephone> telephoneNames in telephones)
+        {
+            foreach (IGrouping<DateTime,Telephone> telephoneDate in telephoneNames.GroupBy(t => t.ManufactureDate).ToList())
+            {
+                Console.WriteLine($"Назва: {telephoneNames.Key} {telephoneDate.Key.Year} - {telephoneDate.Count()}");
+            }
+        }
+    }
+
+    public static void PrintAllInfoTelephones(TelephoneCollection collection)
+    {
+        Console.WriteLine("=== ВСЯ ИНФОРМАЦІЯ ПРО Телефони ===");
+        // все телефонеси
+        /*PrintTelephones(collection.GetAll());*/
+        // 5 самих дорогих телефонесов 
+        /*PrintTelephones(collection.GetMaxPrice5Count());*/
+        // вывод марок телефонов по их количеству 
+        /*PrintTelephonesGroup(collection.GetAllStatistic());*/
+        // вывод марок и моделей телефонов и их колво
+        /*PrintTelephonesGroupModel(collection.GetAllStatistic());*/
+        PrintTelephonesGroupMufacturingDate(collection.GetAllStatistic());
+
     }
 }

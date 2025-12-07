@@ -1,14 +1,12 @@
 ﻿namespace Lab3;
 using System;
-
 public class Program
 {
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        CompanyCollection companyCollection = new CompanyCollection();
-        
+        /*CompanyCollection companyCollection = new CompanyCollection();
         // Генерируем компании
         CompanyGenerator.GenerateRandomCompanies(companyCollection, 5);
         
@@ -17,6 +15,9 @@ public class Program
         
         // Дополнительно: первая компания
         Console.WriteLine("=== ПЕРВАЯ КОМПАНИЯ ===");
-        Printer.PrintCompany(companyCollection.First());
+        Printer.PrintCompany(companyCollection.First());*/
+        TelephoneCollection telephoneCollection = new TelephoneCollection();
+        TelephoneGenerator.GenerateRandomTelephone(telephoneCollection, 10);
+        Printer.PrintAllInfoTelephones(telephoneCollection);
     }
 }
