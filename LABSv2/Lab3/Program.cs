@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Lab3.Models;
-using Lab3.Services;
-using Lab3.Interfaces;
-using Lab3.Filters;
 
 namespace Lab3
 {
@@ -12,54 +7,62 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            // 1. Данные для компаний
-            var companies = new List<Company>
-            {
-                new Company { Name = "Food Corp", BusinessProfile = "Food", EmployeeCount = 150, 
-                            Address = "London", DirectorName = "John White", FoundationDate = new DateTime(2020, 1, 1) },
-                new Company { Name = "Tech Solutions", BusinessProfile = "IT", EmployeeCount = 200, 
-                            Address = "New York", DirectorName = "Mike Black", FoundationDate = new DateTime(2022, 1, 1) }
-            };
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             
-            // 2. Данные для телефонов
-            var phones = new List<Phone>
-            {
-                new Phone { Model = "iPhone 13", Manufacturer = "Apple", Price = 999, ReleaseDate = new DateTime(2021, 9, 1) },
-                new Phone { Model = "Galaxy S22", Manufacturer = "Samsung", Price = 799, ReleaseDate = new DateTime(2022, 2, 1) }
-            };
+            Console.WriteLine("=== ЛАБОРАТОРНА РОБОТА 3 ===");
+            Console.WriteLine();
             
-            // 3. Данные для сотрудников
-            var employees = new List<Employee>
-            {
-                new Worker { Name = "Vladimir Ivanov", Age = 25, BirthDate = new DateTime(1998, 10, 15), 
-                           Salary = 1000, WorkExperience = 5, HasHigherEducation = true },
-                new Manager { Name = "Vladimir Petrov", Age = 35, BirthDate = new DateTime(1988, 3, 20), 
-                            Salary = 2000, WorkExperience = 10, HasHigherEducation = true }
-            };
+            RunCompanyPart();
             
-            // 4. Использование сервисов
-            var companyService = new CompanyService(companies);
-            var phoneService = new PhoneService(phones);
-            var employeeService = new EmployeeService(employees);
+            Console.WriteLine("\n" + new string('=', 60) + "\n");
             
-            // Примеры запросов:
-            Console.WriteLine("=== КОМПАНИИ ===");
-            var foodCompanies = companyService.GetCompaniesByProfile("Food");
-            foreach (var company in foodCompanies)
-            {
-                Console.WriteLine($"Food company: {company.Name}");
-            }
+            RunTelephonePart();
             
-            Console.WriteLine("\n=== ТЕЛЕФОНЫ ===");
-            Console.WriteLine($"Total phones: {phoneService.GetPhoneCount()}");
-            Console.WriteLine($"Average price: {phoneService.GetAveragePrice():C}");
+            Console.WriteLine("\n" + new string('=', 60) + "\n");
             
-            Console.WriteLine("\n=== СОТРУДНИКИ ===");
-            var vladimirs = employeeService.GetEmployeesByName("Vladimir");
-            foreach (var emp in vladimirs)
-            {
-                Console.WriteLine($"Vladimir found: {emp.Name}");
-            }
+            RunFactoryPart();
+            
+            Console.WriteLine("\nНатисніть будь-яку клавішу для виходу...");
+            Console.ReadKey();
+        }
+        
+        static void RunCompanyPart()
+        {
+            Console.WriteLine("ЧАСТИНА 1: ФІРМИ");
+            Console.WriteLine();
+            
+            var companies = new List<Company>();
+            var companyCollection = new CompanyCollection(companies);
+            CompanyGenerator.GenerateRandomCompanies(companyCollection, 10);
+            Printer.PrintAllCompanies(companyCollection);
+            Printer.PrintCompaniesByName(companyCollection, "Food");
+            Printer.PrintMarketingCompanies(companyCollection);
+            Printer.PrintMarketingOrITCompanies(companyCollection);
+            Printer.PrintCompaniesMoreThan(companyCollection, 100);
+            Printer.PrintCompaniesWithEmployeesBetween(companyCollection, 100, 300);
+            Printer.PrintCompaniesInCity(companyCollection, "London");
+            Printer.PrintCompaniesByDirectorLastName(companyCollection, "Black");
+            Printer.PrintCompaniesOlderThanYears(companyCollection, 2);
+            Printer.PrintCompaniesOlderThanDays(companyCollection, 150);
+            Printer.PrintCompaniesComplexQuery(companyCollection);
+        }
+        
+        static void RunTelephonePart()
+        {
+            Console.WriteLine("ЧАСТИНА 2: ТЕЛЕФОНИ");
+            Console.WriteLine();
+            var telephones = new List<Telephone>();
+            var telephoneCollection = new TelephoneCollection(telephones);
+            TelephoneGenerator.GenerateRandomTelephone(telephoneCollection, 15);
+            Printer.PrintTelephoneCollectionInfo(telephoneCollection);
+        }
+        
+        static void RunFactoryPart()
+        {
+            Console.WriteLine("ЧАСТИНА 3: ПІДПРИЄМСТВО");
+            Console.WriteLine();
+            var factory = new Factory();
+            Printer.PrintFactoryInfo(factory);
         }
     }
 }

@@ -4,12 +4,10 @@ using System;
 [Serializable]
 public class Student
 {
-    private const int PerformanceCount = 5; 
+    public const int PerformanceCount = 5; 
     public string FullName { get; set; }
     public string GroupNumber { get; set; }
     public int[] Performance { get; set; } = new int[PerformanceCount];
-    
-    public Student() { }
     
     public Student(string fullName, string groupNumber, int[] performance)
     {
