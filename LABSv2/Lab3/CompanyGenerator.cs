@@ -8,9 +8,9 @@ public class CompanyGenerator
     private static readonly string[] _businessProfile = { "IT", "Marketing", "News"};
     private static readonly int[]  _employeeCount = { 10, 200, 300 };
     private static DateTime[] _foundationDate = {
-        new DateTime(1900, 1, 15),
-        new DateTime(2025, 10, 20),
-        new DateTime(2022, 6, 10)
+        new DateTime(2022, 1, 15),
+        new DateTime(2015, 10, 20),
+        new DateTime(2018, 6, 10)
     };
 
     private static Random _random = new Random();

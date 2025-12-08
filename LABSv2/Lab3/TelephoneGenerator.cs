@@ -21,7 +21,7 @@ public class TelephoneGenerator
         string model = _model[_random.Next(_model.Length)];
         return new Telephone(name, foundationDate, price, model);
     }
-
+    
     public static void GenerateRandomTelephone(TelephoneCollection collection, int count)
     {
         for (int i = 0; i < count; i++)

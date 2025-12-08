@@ -1,122 +1,75 @@
 ﻿namespace Lab3;
-
+using System.Collections.Generic;
 using System.Linq;
 
 public class CompanyCollection
 {
-    private List<Company> _companies;
-    
-    public CompanyCollection()
+    private readonly List<Company> _companies;
+
+    public CompanyCollection(List<Company> companies)
     {
-        _companies = new List<Company>();
-    }
-    
-    public void AddCompany(Company company)
-    { 
-        _companies.Add(company);
+        _companies = companies;
     }
 
-    /*
-     * Отримати інформацію про всі фірми
-     */
-    public List<Company> GetAll()
+    public List<Company> AllCompanies()
     {
         return _companies.ToList();
     }
-    
-    /*
-     * Отримати фірми, які мають назву Food
-     */
-    public List<Company> GetAllFood()
+
+    public void AddCompany(Company company)
     {
-        return _companies.Where(c => c.Name == "Food").ToList();
+        _companies.Add(company);
     }
-    
-    /*
-     * Отримати фірми, що працюють у галузі маркетингу
-     */
-    public List<Company> GetAllBusinessProfileMarketing()
+
+    public List<Company> CompaniesByName(string name)
     {
-        return _companies.Where(c => c.BusinessProfile is "Marketing").ToList();
+        return _companies.Where(c => c.Name.Equals(name)).ToList();
     }
-    
-    /*
-     * отримати фірми, що працюють у галузі маркетингу або IT;
-     */
-    public List<Company> GetAllBusinessProfileMarketingOrIT()
+
+    public List<Company> MarketingCompanies()
     {
-        return _companies.Where(c => c.BusinessProfile is "Marketing" or "IT").ToList();
+        return _companies.Where(c => c.BusinessProfile.Equals("Marketing")).ToList();
     }
-    
-    private IEnumerable<Company> GetAllEmployeeCountGreaterThan(int count)
+
+    public List<Company> MarketingOrITCompanies()
     {
-        return _companies.Where(c => c.EmployeeCount > count);
+        return _companies.Where(c => c.BusinessProfile.Equals("Marketing") || c.BusinessProfile.Equals("IT")).ToList();
     }
-    
-    private IEnumerable<Company> GetAllEmployeeCountLessThan(int count, IEnumerable<Company>? companies)
-    { 
-        return (companies ?? _companies).Where(c => c.EmployeeCount < count);
-    }
-    
-    /*
-     * отримати фірми з кількістю співробітників більше 100;
-     */
-    public List<Company> GetAllEmployeeCountGreaterThan100()
+
+    public List<Company> CompaniesMoreThan(int count)
     {
-        return GetAllEmployeeCountGreaterThan(100).ToList();
+        return _companies.Where(c => c.EmployeeCount > count).ToList();
     }
-    
-    /*
-     * отримати фірми з кількістю співробітників більше 100;
-     */
-    public List<Company> GetAllEmployeeCountBetween100And300()
+
+    public List<Company> CompaniesWithEmployeesBetween(int min, int max)
     {
-        var companies = GetAllEmployeeCountGreaterThan(100);
-        return GetAllEmployeeCountLessThan(300, companies).ToList();
+        return _companies.Where(c => c.EmployeeCount >= min && c.EmployeeCount <= max).ToList();
     }
-    
-    /*
-     * отримати фірми, що знаходяться у Лондоні;
-     */
-    public List<Company> GetAllCountryIsLondon()
+
+    public List<Company> CompaniesInCity(string country)
     {
-        return _companies.Where(c => c.Country is "London").ToList();
+        return _companies.Where(c => c.Address.Contains(country)).ToList();
     }
-    
-    /*
-     * отримати фірми, які мають прізвище директора White;
-     */
-    public List<Company> GetAllDirectorNameIsWhite()
+
+    public List<Company> CompaniesByDirectorLastName(string lastName)
     {
-        return _companies.Where(c => c.DirectorName is "White").ToList();
+        return _companies.Where(c => c.DirectorName.EndsWith(lastName)).ToList();
     }
-    
-    /*
-     * отримати фірми, які засновані понад два роки тому;
-     */
-    public List<Company> GetAllFoundationDateSubstract2Years()
+
+    public List<Company> CompaniesOlderThanYears(int years)
     {
-        return _companies.Where(c => c.FoundationDate >= DateTime.Now.AddYears(-2)).ToList();
+        DateTime thresholdDate = DateTime.Now.AddYears(-years);
+        return _companies.Where(c => c.FoundationDate <= thresholdDate).ToList();
     }
-    
-    /*
-     * отримати фірми, з дня заснування яких минуло більше 150 днів;
-     */
-    public List<Company> GetAllFoundationDateSubstract150Days()
+
+    public List<Company> CompaniesOlderThanDays(int days)
     {
-        return _companies.Where(c => c.FoundationDate >= DateTime.Now.AddDays(-150)).ToList();
+        DateTime thresholdDate = DateTime.Now.AddDays(-days);
+        return _companies.Where(c => c.FoundationDate <= thresholdDate).ToList();
     }
-    
-    /*
-     * отримати фірми, які мають прізвище директора White;
-     */
-    public List<Company> GetAllDirectorNameIsBlackAndNameIsWhite()
+
+    public List<Company> CompaniesComplexQuery()
     {
-        return _companies.Where(c => (c is { DirectorName: "Black", Name: "White" })).ToList();
-    }
-    
-    public Company First()
-    {
-        return _companies.First();
+        return _companies.Where(c => c.DirectorName.EndsWith("Black") && c.Name.Contains("White")).ToList();
     }
 }
