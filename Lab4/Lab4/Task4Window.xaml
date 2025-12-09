@@ -1,0 +1,35 @@
+﻿<Window x:Class="Lab4.Task4Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Гра: Сховати всі кнопки" Height="400" Width="500">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" x:Name="gameStatus" Content="Натисніть на кнопки, щоб сховати їх!" FontSize="16" 
+               HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
+            <Button x:Name="button1" Content="Червона" Width="100" Height="40" Margin="5" Background="Red"
+                    Foreground="White" FontWeight="Bold" Click="Button_Click"/>
+            
+            <Button x:Name="button2" Content="Синесенька" Width="100" Height="40" Margin="5" Background="Blue"
+                    Foreground="White" FontStyle="Italic" Click="Button_Click"/>
+            
+            <Button x:Name="button3" Content="Жовтюща" Width="100" Height="40" Margin="5" Background="Yellow" 
+                    Foreground="Black" FontSize="18" Click="Button_Click"/>
+            
+            <Button x:Name="button4" Content="Фіолетова" Width="100" Height="40" Margin="5" Background="Purple"
+                    Foreground="White" FontStretch="Expanded" Click="Button_Click"/>
+            
+            <Button x:Name="button5" Content="Сірюща" Width="100" Height="40" Margin="5" Background="Gray"
+                    Foreground="Black" FontFamily="Comic Sans MS" Click="Button_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>
