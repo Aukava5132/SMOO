@@ -1,0 +1,67 @@
+﻿<Window x:Class="Lab5.GasStation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Автозаправка BestOil" Height="450" Width="700">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Заправка -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <Label Content="ЗАПРАВКА"/>
+            
+            <Label Content="Вид пального:"/>
+            <ComboBox x:Name="fuelType" SelectedIndex="0">
+                <ComboBoxItem Content="АІ-95"/>
+                <ComboBoxItem Content="АІ-98"/>
+                <ComboBoxItem Content="Дизель"/>
+            </ComboBox>
+            
+            <Label Content="Ціна:"/>
+            <TextBlock x:Name="price" Text="46.50 грн"/>
+            
+            <Label Content="Літри:"/>
+            <TextBox x:Name="liters" Text="0"/>
+            
+            <Label Content="Сума:"/>
+            <TextBlock x:Name="fuelSum" Text="0 грн"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Margin="10">
+            <Label Content="МІНІ-КАФЕ"/>
+            
+            <CheckBox x:Name="hotdog" Content="Хот-дог (45 грн)"/>
+            <TextBox x:Name="hotdogQty" Text="1"/>
+            
+            <CheckBox x:Name="burger" Content="Бургер (65 грн)"/>
+            <TextBox x:Name="burgerQty" Text="1"/>
+            
+            <CheckBox x:Name="fries" Content="Фрі (35 грн)"/>
+            <TextBox x:Name="friesQty" Text="1"/>
+            
+            <Label Content="Сума за кафе:"/>
+            <TextBlock x:Name="cafeSum" Text="0 грн"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Margin="10">
+            <Label Content="ДО СПЛАТИ"/>
+            
+            <Label Content="Пальне:"/>
+            <TextBlock x:Name="fuelTotal" Text="0 грн"/>
+            
+            <Label Content="Кафе:"/>
+            <TextBlock x:Name="cafeTotal" Text="0 грн"/>
+            
+            <Label Content="РАЗОМ:"/>
+            <TextBlock x:Name="total" Text="0 грн"/>
+            
+            <Button Content="Розрахувати" Click="Calculate"/>
+            <Button Content="Нове замовлення" Click="NewOrder"/>
+            <Button Content="Закрити" Click="CloseWindow"/>
+        </StackPanel>
+    </Grid>
+</Window>

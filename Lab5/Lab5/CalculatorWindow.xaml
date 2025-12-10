@@ -1,0 +1,58 @@
+﻿<Window x:Class="Lab5.CalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Калькулятор" Height="400" Width="350">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" Background="LightGray">
+            <TextBox x:Name="display" Text="0" IsReadOnly="True" 
+                     FontSize="28" HorizontalContentAlignment="Right"/>
+        </Border>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Row="0" Grid.Column="0" Content="C" Click="Clear"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="CE" Click="ClearEntry"/>
+            <Button Grid.Row="0" Grid.Column="2" Content="DEL" Click="Backspace"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="/" Click="Operation"/>
+            
+            <Button Grid.Row="1" Grid.Column="0" Content="7" Click="Number"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="8" Click="Number"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="9" Click="Number"/>
+            <Button Grid.Row="1" Grid.Column="3" Content="×" Click="Operation"/>
+            
+            <Button Grid.Row="2" Grid.Column="0" Content="4" Click="Number"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="5" Click="Number"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="6" Click="Number"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="-" Click="Operation"/>
+            
+            <Button Grid.Row="3" Grid.Column="0" Content="1" Click="Number"/>
+            <Button Grid.Row="3" Grid.Column="1" Content="2" Click="Number"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="3" Click="Number"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="+" Click="Operation"/>
+            
+            <Button Grid.Row="4" Grid.Column="0" Content="±" Click="ChangeSign"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="0" Click="Number"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="." Click="Dot"/>
+            <Button Grid.Row="4" Grid.Column="3" Content="=" Click="Equals"/>
+        </Grid>
+    </Grid>
+</Window>
